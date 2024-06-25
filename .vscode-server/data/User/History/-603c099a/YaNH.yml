@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"PersistentVolume","metadata":{"annotations":{"pv.kubernetes.io/provisioned-by":"cluster.local/nfs-subdir-external-provisioner"},"creationTimestamp":"2024-06-14T15:22:21Z","finalizers":["kubernetes.io/pv-protection"],"name":"pvc-dd14b14d-0221-4123-a33c-5e0ab352c463","resourceVersion":"96692","uid":"36268988-f593-46ea-8233-28030619c5c2"},"spec":{"accessModes":["ReadWriteOnce"],"capacity":{"storage":"10Gi"},"claimRef":{"apiVersion":"v1","kind":"PersistentVolumeClaim","name":"es-data-es-cluster-0","namespace":"default","resourceVersion":"94475","uid":"dd14b14d-0221-4123-a33c-5e0ab352c463"},"nfs":{"path":"/var/nfs/general/default-es-data-es-cluster-0-pvc-dd14b14d-0221-4123-a33c-5e0ab352c463","server":"54.196.61.159"},"persistentVolumeReclaimPolicy":"Delete","storageClassName":"nfs-client","volumeMode":"Filesystem"},"status":{"phase":"Bound"}}
+    pv.kubernetes.io/provisioned-by: cluster.local/nfs-subdir-external-provisioner
+  creationTimestamp: "2024-06-19T11:37:29Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvc-dd14b14d-0221-4123-a33c-5e0ab352c463
+  resourceVersion: "115821"
+  uid: 830ff634-dc9e-4a7e-8d5b-a6fece628f69
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: es-data-es-cluster-0
+    namespace: default
+    resourceVersion: "94475"
+    uid: dd14b14d-0221-4123-a33c-5e0ab352c463
+  nfs:
+    path: /var/nfs/general/default-es-data-es-cluster-0-pvc-dd14b14d-0221-4123-a33c-5e0ab352c463
+    server: 54.196.69.130
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+status:
+  phase: Bound

@@ -1,0 +1,86 @@
+
+kibana:
+  image: "docker.elastic.co/kibana/kibana:7.10.1"
+  replicas: 1
+  service:
+    type: NodePort
+    port: 5601
+    nodePort: 31084
+
+logstash:
+  image: "docker.elastic.co/logstash/logstash:7.14.0"
+  replicas: 1
+  service:
+    type: ClusterIP
+    port: 5044
+
+nginx:
+  image: "nginx:latest"
+  replicas: 1
+  service:
+    type: LoadBalancer
+    port: 80
+
+elasticsearch:
+  image: "docker.elastic.co/elasticsearch/elasticsearch:7.10.1"
+  replicas: 1
+  service:
+    type: ClusterIP
+    port: 9200
+
+pvc:
+  accessModes: ["ReadWriteOnce"]
+  storage: "10Gi"
+
+redis:
+  image: "redis:latest"
+  service:
+    type: ClusterIP
+    port: 6379
+
+# NFS Provisioner configurations
+nfsProvisioner:
+  replicaCount: 1
+  strategyType: Recreate
+  image:
+    repository: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
+    tag: v4.0.2
+    pullPolicy: IfNotPresent
+  imagePullSecrets: []
+  nfs:
+    server: 100.29.128.153
+    path: /var/nfs/general
+    mountOptions: []
+    volumeName: nfs-subdir-external-provisioner-root
+    reclaimPolicy: Retain
+  storageClass:
+    create: true
+    defaultClass: false
+    name: nfs-client
+    allowVolumeExpansion: true
+    reclaimPolicy: Delete
+    archiveOnDelete: true
+    accessModes: ReadWriteOnce
+    volumeBindingMode: Immediate
+    annotations: {}
+  leaderElection:
+    enabled: true
+  rbac:
+    create: true
+  podSecurityPolicy:
+    enabled: false
+  podAnnotations: {}
+  podSecurityContext: {}
+  securityContext: {}
+  serviceAccount:
+    create: true
+    annotations: {}
+    name: ""
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  labels: {}
+  podDisruptionBudget:
+    enabled: false
+    maxUnavailable: 1

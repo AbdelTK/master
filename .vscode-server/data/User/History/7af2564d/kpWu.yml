@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+40
+kind: StatefulSet
+41
+metadata:
+42
+  name: es
+43
+spec:
+44
+  serviceName: es-cluster
+45
+  replicas: 3
+46
+  selector:
+47
+    matchLabels:
+48
+      app: es
+49
+  template:
+50
+    metadata:
+51
+      labels:
+52
+        app: es
+53
+    spec:
+54
+      securityContext:
+55
+        fsGroup: 1000
+56
+      nodeSelector:
+57
+        kubernetes.io/arch: amd64
+58
+      initContainers:
+59
+      - name: init
+60
+        image: busybox
+61
+        imagePullPolicy: IfNotPresent
+62
+        command: ["/bin/sh", "-c", "sysctl -w vm.max_map_count=262144; ulimit -n 65536; ulimit -u 2048; ulimit -l ulimited"]
+63
+        securityContext:
+64
+          privileged: true
+65
+        containers:
+66
+        - name: elasticsearch
+67
+          image: harbor.zjhw.com/library/elasticsearch:v2
+68
+          imagePullPolicy: Always
+69
+          env: 
+70
+          - name: NAMESPACE
+71
+            valueFrom:
+72
+              fieldRef:
+73
+                fieldPath: metadata.namespace
+74
+          - name: POD_NAME
+75
+            valueFrom:
+76
+              fieldRef:
+77
+                fieldPath: metadata.name
+78
+          - name: POD_IP
+79
+            valueFrom:
+80
+              fieldRef:
+81
+                fieldPath: status.podIP
+82
+          ports:
+83
+          - containerPort: 9200
+84
+            name: restful
+85
+          - containerPort: 9300
+86
+            name: transport
+87
+          volumeMounts:
+88
+          - name: es-data
+89
+            mountPath: /usr/share/elasticsearch/data
+90
+  volumeClaimTemplates:
+91
+  - metadata:
+92
+      name: es-data
+93
+    spec:
+94
+      accessModes: ['ReadWriteOnce']
+95
+      storageClassName: "manual"
+96
+      resources:
+        requests:
+          storage: 10Gi

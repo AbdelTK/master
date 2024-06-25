@@ -1,0 +1,91 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  labels:
+    app: elasticsearch
+spec:
+  type: {{ .Values.elasticsearch.service.type }}
+  ports:
+  - port: {{ .Values.elasticsearch.service.port }}
+    name: http
+  - port: 9300
+    name: transport
+  clusterIP: None
+  selector:
+    app: elasticsearch
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: es-cluster
+spec:
+  selector:
+    matchLabels:
+      app: elasticsearch
+  serviceName: "elasticsearch"
+  replicas: 1
+  minReadySeconds: 15
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      terminationGracePeriodSeconds: 10
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - 100.29.128.153
+                - 18.232.71.215
+                - 52.54.172.152
+      containers:
+      - name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+        ports:
+        - containerPort: 9200
+          name: http
+        - containerPort: 9300
+          name: transport
+        env:
+        - name: discovery.type
+          value: "single-node"
+        - name: cluster.name
+          value: "es-cluster"
+        - name: ELASTICSEARCH_USERNAME
+          value: "elastic"
+        - name: ELASTIC_PASSWORD
+          value: "Hitm@n00"
+        - name: xpack.security.enabled
+          value: "true"
+        - name: xpack.security.authc.api_key.enabled
+          value: "true"
+        - name: node.name
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2"
+        volumeMounts:
+        - name: es-data
+          mountPath: /usr/share/elasticsearch/data
+  volumeClaimTemplates:
+  - metadata:
+      name: es-data
+    spec:
+      accessModes: 
+      - {{ .Values.pvc.accessModes | join ", " }}
+      storageClassName: "nfs-client"
+      resources:
+        requests:
+          storage: 10Gi

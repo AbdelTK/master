@@ -1,0 +1,21 @@
+2024-06-13 08:40:06.329 [info] Extension host with pid 3858 started
+2024-06-13 08:40:06.329 [error] Error: EEXIST: file already exists, open '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock'
+2024-06-13 08:40:06.333 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': Could not acquire lock, checking if the file is stale.
+2024-06-13 08:40:06.343 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': The pid 4440 appears to be gone.
+2024-06-13 08:40:06.343 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': Deleting a stale lock.
+2024-06-13 08:40:06.377 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': Lock acquired.
+2024-06-13 08:40:12.391 [info] ExtensionService#_doActivateExtension vscode.tunnel-forwarding, startup: false, activationEvent: 'onTunnel'
+2024-06-13 08:40:12.394 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-06-13 08:40:13.395 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-06-13 08:40:14.784 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-06-13 08:40:14.784 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-06-13 08:40:16.819 [info] Eager extensions activated
+2024-06-13 08:40:16.820 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-06-13 08:40:16.825 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-06-13 08:42:05.824 [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onTerminalQuickFixRequest:ms-vscode.npm-command'
+2024-06-13 10:16:20.396 [info] ExtensionService#_doActivateExtension vscode.grunt, startup: false, activationEvent: 'onTaskType:grunt'
+2024-06-13 10:16:20.396 [info] ExtensionService#_doActivateExtension vscode.gulp, startup: false, activationEvent: 'onTaskType:gulp'
+2024-06-13 10:16:20.397 [info] ExtensionService#_doActivateExtension vscode.jake, startup: false, activationEvent: 'onTaskType:jake'
+2024-06-13 10:16:20.397 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onTaskType:typescript'
+2024-06-13 10:16:21.726 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+2024-06-13 10:16:21.727 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:json'

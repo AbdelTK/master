@@ -1,0 +1,21 @@
+2024-06-25 09:13:43.293 [info] Extension host with pid 986 started
+2024-06-25 09:13:43.293 [error] Error: EEXIST: file already exists, open '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock'
+2024-06-25 09:13:43.302 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': Could not acquire lock, checking if the file is stale.
+2024-06-25 09:13:43.328 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': The lock looks stale, waiting for 2s.
+2024-06-25 09:13:43.472 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-06-25 09:13:44.475 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-06-25 09:13:45.350 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': The lock looks stale even after waiting for 2s.
+2024-06-25 09:13:45.350 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': Deleting a stale lock.
+2024-06-25 09:13:45.374 [info] Lock '/home/ubuntu/.vscode-server/data/User/workspaceStorage/d2e6cae2e73d15903a0a38c14ab9616e/vscode.lock': Lock acquired.
+2024-06-25 09:13:45.614 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-06-25 09:13:45.615 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-06-25 09:13:46.642 [info] Eager extensions activated
+2024-06-25 09:13:46.643 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-06-25 09:13:46.644 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-06-25 09:42:21.534 [info] ExtensionService#_doActivateExtension vscode.tunnel-forwarding, startup: false, activationEvent: 'onTunnel'
+2024-06-25 09:42:44.932 [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onTerminalQuickFixRequest:ms-vscode.npm-command'
+2024-06-25 11:14:13.647 [warning] [Decorations] CAPPING events from decorations provider vscode.git 4330
+2024-06-25 11:14:14.618 [warning] [Decorations] CAPPING events from decorations provider vscode.git 4330
+2024-06-25 11:14:17.307 [warning] [Decorations] CAPPING events from decorations provider vscode.git 4330
+2024-06-25 11:14:22.522 [warning] [Decorations] CAPPING events from decorations provider vscode.git 4330
+2024-06-25 11:14:33.588 [warning] [Decorations] CAPPING events from decorations provider vscode.git 4330
